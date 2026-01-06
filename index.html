@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeMaster Pro - Speed Typing Practice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌨️</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-keyboard"></i>
+                <h1>TypeMaster <span>Pro</span></h1>
+            </div>
+            <div class="stats-bar">
+                <div class="stat">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span id="high-score">0</span> WPM
+                </div>
+                <div class="stat">
+                    <i class="fas fa-percentage"></i>
+                    <span id="high-accuracy">0</span>%
+                </div>
+                <div class="stat">
+                    <i class="fas fa-fire"></i>
+                    Streak: <span id="streak">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Game Area -->
+        <main>
+            <!-- Game Mode Selection -->
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="time">60s Sprint</button>
+                <button class="mode-btn" data-mode="words">30 Words</button>
+                <button class="mode-btn" data-mode="quotes">Quotes</button>
+                <button class="mode-btn" data-mode="code">Code Practice</button>
+            </div>
+
+            <!-- Difficulty Selection -->
+            <div class="difficulty-selector">
+                <button class="diff-btn active" data-diff="easy">Easy</button>
+                <button class="diff-btn" data-diff="medium">Medium</button>
+                <button class="diff-btn" data-diff="hard">Hard</button>
+                <button class="diff-btn" data-diff="expert">Expert</button>
+            </div>
+
+            <!-- Timer & Stats -->
+            <div class="game-stats">
+                <div class="timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="time">60</span>s
+                </div>
+                <div class="wpm-display">
+                    <span id="current-wpm">0</span> WPM
+                </div>
+                <div class="accuracy-display">
+                    <span id="current-accuracy">100</span>% Accuracy
+                </div>
+            </div>
+
+            <!-- Typing Area -->
+            <div class="typing-container">
+                <div class="text-display" id="text-display">
+                    <!-- Words will appear here -->
+                    <span class="word current">Loading</span>
+                    <span class="word">text</span>
+                    <span class="word">for</span>
+                    <span class="word">typing</span>
+                    <span class="word">practice</span>
+                </div>
+                
+                <div class="input-area">
+                    <input type="text" id="typing-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Start typing here...">
+                    <button id="restart-btn">
+                        <i class="fas fa-redo"></i> Restart
+                    </button>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- Results Panel (Hidden Initially) -->
+            <div class="results-panel" id="results-panel">
+                <h2><i class="fas fa-trophy"></i> Round Complete!</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>Speed</h3>
+                        <div class="result-value" id="result-wpm">0</div>
+                        <div class="result-label">Words Per Minute</div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Accuracy</h3>
+                        <div class="result-value" id="result-accuracy">0%</div>
+                        <div class="result-label">Correct Characters</div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Time</h3>
+                        <div class="result-value" id="result-time">0s</div>
+                        <div class="result-label">Total Time</div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Score</h3>
+                        <div class="result-value" id="result-score">0</div>
+                        <div class="result-label">Total Points</div>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button id="play-again-btn" class="primary-btn">
+                        <i class="fas fa-play"></i> Play Again
+                    </button>
+                    <button id="share-btn" class="secondary-btn">
+                        <i class="fas fa-share"></i> Share Score
+                    </button>
+                </div>
+            </div>
+
+            <!-- Practice Tips -->
+            <div class="tips-section">
+                <h3><i class="fas fa-lightbulb"></i> Tips to Improve</h3>
+                <div class="tips-grid">
+                    <div class="tip">
+                        <i class="fas fa-hands"></i>
+                        <p>Keep fingers on home row keys</p>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-eye"></i>
+                        <p>Look ahead, not at your fingers</p>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-heartbeat"></i>
+                        <p>Practice daily for 15-20 minutes</p>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Focus on accuracy first, then speed</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TypeMaster Pro</h4>
+                    <p>Free typing practice to improve your speed and accuracy. No ads, no tracking.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Multiple difficulty levels</li>
+                        <li>Different practice modes</li>
+                        <li>Progress tracking</li>
+                        <li>Local storage for stats</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Share"><i class="fas fa-share-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Made with <i class="fas fa-heart" style="color: #ff4757;"></i> for typing enthusiasts</p>
+                <p class="version">v1.0 • Works 100% in your browser</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Audio Elements (Optional) -->
+    <audio id="key-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="complete-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
